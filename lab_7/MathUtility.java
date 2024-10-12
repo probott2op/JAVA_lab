@@ -10,7 +10,7 @@ public class MathUtility
         long num = prefix;
         for (int i = 0; i < 8; i++) 
         {
-            num = num * 10 + (long) Math.random();
+            num = num * 10 + (long) (Math.random()*10);
         }
         num = num * 10 + suffix;
         return num;
