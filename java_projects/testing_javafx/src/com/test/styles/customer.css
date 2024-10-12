@@ -1,0 +1,16 @@
+.root
+{
+    heading-color: #cfe34d;
+    prompt-color: #c9620e;
+}
+.heading-label
+{
+    -fx-text-fill: heading-color;
+    -fx-font-size: 32;
+    -fx-font-weight: bold;
+}
+.prompt-label
+{
+    -fx-text-fill: prompt-color;
+    -fx-font-size: 16;
+}
