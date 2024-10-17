@@ -17,6 +17,7 @@ public class App extends Application
         Scene PrimaryScene = new Scene(controller.getSignInView());
         PrimaryStage.setScene(PrimaryScene);
         PrimaryStage.setTitle("Customer Database");
+        PrimaryStage.setResizable(false);
         PrimaryStage.show();
     }
 }

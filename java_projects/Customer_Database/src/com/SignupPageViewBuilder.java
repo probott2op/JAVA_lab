@@ -21,13 +21,14 @@ public class SignupPageViewBuilder implements Builder<Region>
     public Region build()
     {
         
-        Node Heading = CreateLabel("Create New Account", null);
-        Node NameText = CreateTextBox(model.getNameProperty(), "Enter Name", null);
-        Node AccountText = CreateTextBox(model.getAccountNoProperty(), "Enter bank Account No", null);
-        Node UserIdText = CreateTextBox(model.getUserIdProperty(), "Enter User Id", null);
-        Node PasswordText = CreateTextBox(model.getPasswordProperty(), "Enter Password", null);
-        Node SignUpButton = CreateButton("Register", null, event -> SignUpHandler.run());
+        Node Heading = CreateLabel("Create New Account", "title");
+        Node NameText = CreateTextBox(model.getNameProperty(), "Enter Name", "text-field");
+        Node AccountText = CreateTextBox(model.getAccountNoProperty(), "Enter bank Account No", "text-field");
+        Node UserIdText = CreateTextBox(model.getUserIdProperty(), "Enter User Id", "text-field");
+        Node PasswordText = CreateTextBox(model.getPasswordProperty(), "Enter Password", "text-field");
+        Node SignUpButton = CreateButton("Register", "button", event -> SignUpHandler.run());
         VBox main = new VBox(15,Heading,NameText,AccountText,UserIdText,PasswordText,SignUpButton);
+        main.getStylesheets().add(this.getClass().getResource("styles/Signup.css").toExternalForm());
         return main;
     }
 }

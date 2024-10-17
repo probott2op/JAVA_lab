@@ -20,11 +20,13 @@ import static com.BoilerPlateUI.CreateButton;
 public class CustomerViewBuilder implements Builder<Region>
 {
     CustomerModel model;
-    Runnable savehandler;
-    CustomerViewBuilder(CustomerModel model,Runnable savehandler)
+    Runnable SignInHandler;
+    Runnable SignUpHandler;
+    CustomerViewBuilder(CustomerModel model,Runnable SignInHandler,Runnable SignUpHandler)
     {
         this.model = model;
-        this.savehandler = savehandler;
+        this.SignInHandler = SignInHandler;
+        this.SignUpHandler = SignUpHandler;
     }
     @Override
     public Region build()
@@ -49,9 +51,9 @@ public class CustomerViewBuilder implements Builder<Region>
     }
     public Node SignInBox()
     {
-        Node Login = CreateButton("Login", "login-button", event -> savehandler.run());
+        Node Login = CreateButton("Login", "login-button", event -> SignInHandler.run());
         Node Sign_UpLabel = CreateLabel("Don't Have Account yet?", "signup-label");
-        Node Sign_upButton = CreateButton("Sign Up", "signup-button", null);
+        Node Sign_upButton = CreateButton("Sign Up", "signup-button", event -> SignUpHandler.run());
         HBox Sign_upBox = new HBox(20,Sign_UpLabel,Sign_upButton);
         VBox sign_in = new VBox(20,CreateLabel("Login","heading-label"),CenterBox(),Sign_upBox,Login);
         sign_in.getStyleClass().add("login-container");
