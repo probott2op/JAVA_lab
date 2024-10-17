@@ -13,7 +13,7 @@ public class App extends Application
     @Override
     public void start(Stage PrimaryStage)
     {
-        CustomerController controller = new CustomerController();
+        CustomerController controller = new CustomerController(PrimaryStage);
         Scene PrimaryScene = new Scene(controller.getSignInView());
         PrimaryStage.setScene(PrimaryScene);
         PrimaryStage.setTitle("Customer Database");

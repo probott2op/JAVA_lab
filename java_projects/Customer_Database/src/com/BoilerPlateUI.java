@@ -23,7 +23,9 @@ public class BoilerPlateUI
     {
         TextField Text = new TextField("");
         Text.setPromptText(Prompt);
-        Text.textProperty().bindBidirectional(bind);
+        Text.textProperty().addListener((observer,oldvalue,newvalue)->{
+            bind.set(newvalue);
+        });
         Text.getStyleClass().add(CssClass);
         Text.setMaxWidth(150);
         return Text;

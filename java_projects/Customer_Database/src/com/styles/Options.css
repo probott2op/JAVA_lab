@@ -1,0 +1,32 @@
+/* AnchorPane Styles */
+.anchor-pane {
+    -fx-background-color: #62c47c; /* Light gray background */
+    -fx-padding: 20; /* Padding around the pane */
+}
+
+/* Button Styles */
+.button {
+    -fx-background-color: #007bff; /* Blue background */
+    -fx-text-fill: white; /* White text */
+    -fx-font-size: 14px; /* Font size */
+    -fx-padding: 10; /* Padding inside the button */
+    -fx-border-radius: 5; /* Rounded corners */
+    -fx-background-radius: 5; /* Rounded corners for background */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 1); /* Shadow effect */
+}
+
+/* Button Hover Effect */
+.button:hover {
+    -fx-background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Text Inside Button Styles */
+.button .text {
+    -fx-font-weight: bold; /* Bold text */
+    -fx-font-size: 16px; /* Slightly larger text size */
+}
+
+/* ImageView Styles (if needed) */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 2, 0, 0, 1); /* Optional shadow effect for images */
+}

@@ -43,8 +43,8 @@ public class CustomerViewBuilder implements Builder<Region>
     }
     public Node CenterBox()
     {
-        Node text1 = CreateTextBox(model.getAccountNoProperty(), "User Name","login-text-field");
-        Node text2 = CreateTextBox(model.getNameProperty(), "Password","login-text-field");
+        Node text1 = CreateTextBox(model.getUserIdProperty(), "User Name","login-text-field");
+        Node text2 = CreateTextBox(model.getPasswordProperty(), "Password","login-text-field");
         VBox temp =  new VBox(10,text1,text2);
         temp.setAlignment(Pos.CENTER);
         return temp;
