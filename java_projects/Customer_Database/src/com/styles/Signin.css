@@ -1,0 +1,79 @@
+/* Styles for the Page Title */
+.page-title {
+    -fx-font-size: 36px;                            /* Font size for the heading */
+    -fx-font-weight: bold;                          /* Bold font for emphasis */
+    -fx-text-fill: #6cb88e;                        /* green text color */
+    -fx-padding: 10px;                          /* Center text alignment */
+}
+
+/* Styles for the entire login container */
+.login-container {
+    -fx-background-color: rgba(255, 255, 255, 0.75);  /* White background with 75% opacity */
+    -fx-padding: 20px;                               /* Padding around the container */
+    -fx-alignment: center;                           /* Center align the content */
+    -fx-border-radius: 10px;                        /* Rounded corners for the container */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.0, 0, 0); /* Soft shadow effect */
+}
+
+/* Styles for the Heading Label */
+.heading-label {
+    -fx-font-size: 24px;                            /* Font size for the heading */
+    -fx-font-weight: bold;                          /* Bold font for emphasis */
+    -fx-text-fill: #0077cc;                        /* Blue text color */
+    -fx-padding: 10px;                              /* Padding around the heading */
+}
+
+/* Common styles for the TextFields */
+.login-text-field {
+    -fx-background-color: white;                    /* White background for text fields */
+    -fx-text-fill: #333333;                         /* Dark gray text color */
+    -fx-font-size: 14px;                            /* Font size for input text */
+    -fx-padding: 10px;                              /* Padding inside text fields */
+    -fx-border-color: #0077cc;                     /* Border color */
+    -fx-border-radius: 5px;                        /* Rounded corners */
+    -fx-border-width: 2px;                          /* Border width */
+}
+
+/* Optional: Change border color on focus */
+.login-text-field:focused {
+    -fx-border-color: #005999;                      /* Darker border color on focus */
+}
+
+/* Styles for the Login Button */
+.login-button {
+    -fx-background-color: #0077cc;                  /* Button background color */
+    -fx-text-fill: white;                           /* Button text color */
+    -fx-font-size: 16px;                            /* Font size for the button */
+    -fx-padding: 10px 20px;                         /* Padding inside the button */
+    -fx-border-radius: 5px;                         /* Rounded corners */
+    -fx-cursor: hand;                               /* Hand cursor on hover */
+}
+
+/* Button hover effect */
+.login-button:hover {
+    -fx-background-color: #005999;                  /* Darker blue on hover */
+}
+.signup-label
+{
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+}
+/* Styles for the Sign-Up Button */
+.signup-button {
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-text-fill: black;               /* Black text color */
+    -fx-font-size: 16px;                /* Font size for the button */
+    -fx-padding: 10px 20px;            /* Padding inside the button */
+    -fx-border-color: black;            /* Black border color */
+    -fx-border-radius: 5px;             /* Rounded corners */
+    -fx-border-width: 2px;              /* Border width */
+    -fx-cursor: hand;                   /* Hand cursor on hover */
+}
+
+/* Button hover effect */
+.signup-button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1); /* Light gray background on hover */
+}
+
+
