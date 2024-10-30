@@ -76,4 +76,14 @@
     -fx-background-color: rgba(0, 0, 0, 0.1); /* Light gray background on hover */
 }
 
+.error-label {
+    -fx-text-fill: red;       /* Set text color to red */
+    -fx-font-weight: bold;    /* Make text bold */
+    -fx-font-size: 14px;      /* Set font size */
+    -fx-background-color: #f8d7da; /* Light red background */
+    -fx-padding: 10px;        /* Add padding */
+    -fx-border-color: red;    /* Red border color */
+    -fx-border-width: 1px;    /* Set border width */
+    -fx-border-radius: 5px;   /* Rounded corners */
+}
 

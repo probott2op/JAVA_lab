@@ -1,4 +1,5 @@
 package com;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
@@ -6,19 +7,22 @@ import javafx.util.Builder;
 public class CustomerController 
 {
     Stage PrimaryStage;
-    CustomerModel model;
+    CustomerModel model_signup;
+    CustomerModel model_signin;
     Builder<Region> SignInview;
     Builder<Region> SignUpview;
     Builder<Region> OptionMenuview;
     CustomerInteractor interactor;
+    CustomerDatabaseBroker broker;
     CustomerController(Stage PrimaryStage)
     {
         this.PrimaryStage = PrimaryStage;
-        model = new CustomerModel();
-        interactor = new CustomerInteractor(model);
-        SignInview = new CustomerViewBuilder(model, this::OptionsMenu,this::SignUpWindow);
-        SignUpview = new SignupPageViewBuilder(model,interactor::saveCustomer);
-        OptionMenuview = new OptionMenu();
+        broker = new CustomerDatabaseBroker();
+        model_signup = new CustomerModel();
+        model_signin = new CustomerModel();
+        interactor = new CustomerInteractor(model_signup,broker);
+        SignInview = new CustomerViewBuilder(model_signin, this::OptionsMenu,this::SignUpWindow);
+        SignUpview = new SignupPageViewBuilder(model_signup,interactor::saveCustomer);
     }
     public Region getSignInView()
     {
@@ -31,9 +35,30 @@ public class CustomerController
         SignUpStage.setScene(SignUpScene);
         SignUpStage.show();
     }
-    private void OptionsMenu()
+    private void OptionsMenu(Node incorrect)
     {
-        Scene MenuScene = new Scene(OptionMenuview.build());
-        PrimaryStage.setScene(MenuScene);
-    }    
+        int flag = 0;
+        for (int i = 1; i <= broker.db.count; i++)
+        {
+            String temp_user = broker.db.getDetail(i, "UserId:");
+            String temp_pass = broker.db.getDetail(i, "Password:");
+            if (temp_user.equals(model_signin.getUserId()) && temp_pass.equals(model_signin.getPassword()))
+            {
+                flag = 1;
+                OptionMenuview = new OptionMenu(broker, i, this::logout);
+                Scene MenuScene = new Scene(OptionMenuview.build());
+                PrimaryStage.setScene(MenuScene);
+                break;
+            }
+        }
+        if (flag != 1)
+        {
+            incorrect.setVisible(true);
+        }
+    }
+    private void logout()
+    {
+        Scene logout = new Scene(getSignInView());
+        PrimaryStage.setScene(logout);
+    }
 }

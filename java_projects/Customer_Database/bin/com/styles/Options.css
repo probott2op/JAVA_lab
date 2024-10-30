@@ -30,3 +30,34 @@
 .image-view {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 2, 0, 0, 1); /* Optional shadow effect for images */
 }
+
+.heading {
+    -fx-font-size: 28px; /* Larger font size for emphasis */
+    -fx-font-weight: bold;
+    -fx-text-fill: white; /* High contrast text color */
+    -fx-text-alignment: center; /* Center the text */
+    -fx-padding: 15px 20px; /* More padding for a spacious feel */
+    -fx-background-color: rgba(98, 196, 125, 0.8); /* Slightly less transparency for better visibility */
+    -fx-background-radius: 10px; /* More rounded corners for a modern look */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0.0, 0, 1); /* Subtle drop shadow for depth */
+    -fx-border-color: white; /* Optional border for definition */
+    -fx-border-width: 2px; /* Border width */
+    -fx-border-radius: 10px; /* Match border radius with background */
+}
+.signout-button {
+    -fx-font-size: 16px; /* Font size for readability */
+    -fx-font-weight: bold;
+    -fx-text-fill: white; /* Text color */
+    -fx-background-color: #d9534f; /* Red background */
+    -fx-background-radius: 5px; /* Slightly rounded corners */
+    -fx-padding: 10px 15px; /* Padding for spacing */
+    -fx-border-color: #a94442; /* Darker red border */
+    -fx-border-width: 2px; /* Border width */
+    -fx-cursor: hand; /* Change cursor to pointer */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0.0, 0, 1); /* Subtle shadow for depth */
+}
+
+.signout-button:hover {
+    -fx-background-color: #c9302c; /* Darker red on hover */
+}
+

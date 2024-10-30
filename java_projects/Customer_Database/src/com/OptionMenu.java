@@ -1,5 +1,9 @@
 package com;
 
+import static com.BoilerPlateUI.CreateButton;
+import static com.BoilerPlateUI.CreateLabel;
+
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
@@ -7,11 +11,24 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.util.Builder;
+
+
 public class OptionMenu implements Builder<Region>
 {
+    CustomerDatabaseBroker broker;
+    int id;
+    Runnable signout;
+    OptionMenu(CustomerDatabaseBroker broker, int id, Runnable signout)
+    {
+        this.signout = signout;
+        this.broker = broker;
+        this.id = id;
+    }
     @Override
     public Region build()
     {
+        Node welcome_label = CreateLabel("Weclome "+broker.db.getDetail(id, "Name:"), "heading");
+
         // Loading Image and sizing it up
         Image Payment = new Image(this.getClass().getResourceAsStream("Images/Payment.png"));
         ImageView PaymentView = new ImageView(Payment);
@@ -33,15 +50,20 @@ public class OptionMenu implements Builder<Region>
         Shopping_button.setGraphic(PaymentView);
         Shopping_button.setContentDisplay(ContentDisplay.TOP);
         Shopping_button.getStyleClass().add("button");
+        Node signout_button = CreateButton("Log out", "signout-button", event -> signout.run());
 
         AnchorPane MainFrame = new AnchorPane();
         MainFrame.setMinHeight(600);
         MainFrame.setMinWidth(800);
+        AnchorPane.setTopAnchor(signout_button,0.0);
+        AnchorPane.setLeftAnchor(signout_button,0.0);
+        AnchorPane.setTopAnchor(welcome_label, 25.0);
+        AnchorPane.setLeftAnchor(welcome_label, 225.0);
         AnchorPane.setTopAnchor(Payment_button, 125.0);
         AnchorPane.setLeftAnchor(Payment_button, 50.0);
         AnchorPane.setTopAnchor(Shopping_button, 125.0);
         AnchorPane.setLeftAnchor(Shopping_button, 400.0);
-        MainFrame.getChildren().addAll(Payment_button,Shopping_button);
+        MainFrame.getChildren().addAll(Payment_button,Shopping_button,welcome_label,signout_button);
         MainFrame.getStylesheets().add(this.getClass().getResource("styles/Options.css").toExternalForm());
         MainFrame.getStyleClass().add("anchor-pane");
         return MainFrame;

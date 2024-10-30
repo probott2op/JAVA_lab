@@ -1,16 +1,17 @@
 package com;
 
 import java.util.Map;
+
 import java.util.HashMap;
 
 public class CustomerInteractor 
 {
     CustomerModel model;
     CustomerDatabaseBroker broker;
-    CustomerInteractor(CustomerModel model)
+    CustomerInteractor(CustomerModel model, CustomerDatabaseBroker broker)
     {
         this.model = model;
-        broker = new CustomerDatabaseBroker();
+        this.broker = broker;
     }
     public void saveCustomer()
     {

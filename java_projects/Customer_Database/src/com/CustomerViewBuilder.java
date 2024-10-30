@@ -14,17 +14,20 @@ import javafx.scene.image.ImageView;
 import static com.BoilerPlateUI.CreateLabel;
 import static com.BoilerPlateUI.CreateTextBox;
 import static com.BoilerPlateUI.CreateButton;
+import static com.BoilerPlateUI.CreatePassBox;
 
-
-
+interface Signin
+{
+    void OptionsMenu(Node incorrect);
+}
 public class CustomerViewBuilder implements Builder<Region>
 {
-    CustomerModel model;
-    Runnable SignInHandler;
+    CustomerModel model_signin;
+    Signin SignInHandler;
     Runnable SignUpHandler;
-    CustomerViewBuilder(CustomerModel model,Runnable SignInHandler,Runnable SignUpHandler)
+    CustomerViewBuilder(CustomerModel model,Signin SignInHandler,Runnable SignUpHandler)
     {
-        this.model = model;
+        this.model_signin = model;
         this.SignInHandler = SignInHandler;
         this.SignUpHandler = SignUpHandler;
     }
@@ -43,19 +46,21 @@ public class CustomerViewBuilder implements Builder<Region>
     }
     public Node CenterBox()
     {
-        Node text1 = CreateTextBox(model.getUserIdProperty(), "User Name","login-text-field");
-        Node text2 = CreateTextBox(model.getPasswordProperty(), "Password","login-text-field");
+        Node text1 = CreateTextBox(model_signin.getUserIdProperty(), "User Name","login-text-field");
+        Node text2 = CreatePassBox(model_signin.getPasswordProperty(), "Password","login-text-field");
         VBox temp =  new VBox(10,text1,text2);
         temp.setAlignment(Pos.CENTER);
         return temp;
     }
     public Node SignInBox()
     {
-        Node Login = CreateButton("Login", "login-button", event -> SignInHandler.run());
         Node Sign_UpLabel = CreateLabel("Don't Have Account yet?", "signup-label");
         Node Sign_upButton = CreateButton("Sign Up", "signup-button", event -> SignUpHandler.run());
         HBox Sign_upBox = new HBox(20,Sign_UpLabel,Sign_upButton);
-        VBox sign_in = new VBox(20,CreateLabel("Login","heading-label"),CenterBox(),Sign_upBox,Login);
+        Node incorrect = CreateLabel("Wrong credentials entered , Please retry", "error-label");
+        incorrect.setVisible(false);
+        Node Login = CreateButton("Login", "login-button", event -> SignInHandler.OptionsMenu(incorrect));
+        VBox sign_in = new VBox(20,CreateLabel("Login","heading-label"),CenterBox(),Sign_upBox,Login,incorrect);
         sign_in.getStyleClass().add("login-container");
         sign_in.setMaxHeight(300);
         sign_in.setMaxWidth(500);
