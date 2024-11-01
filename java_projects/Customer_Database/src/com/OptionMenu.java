@@ -18,11 +18,13 @@ public class OptionMenu implements Builder<Region>
     CustomerDatabaseBroker broker;
     int id;
     Runnable signout;
-    OptionMenu(CustomerDatabaseBroker broker, int id, Runnable signout)
+    Runnable abhijith;
+    OptionMenu(CustomerDatabaseBroker broker, int id, Runnable signout, Runnable abhijith)
     {
         this.signout = signout;
         this.broker = broker;
         this.id = id;
+        this.abhijith = abhijith;
     }
     @Override
     public Region build()
@@ -46,6 +48,7 @@ public class OptionMenu implements Builder<Region>
         Payment_button.setGraphic(ShoppingView);
         Payment_button.setContentDisplay(ContentDisplay.TOP);
         Payment_button.getStyleClass().add("button");
+        Payment_button.setOnAction(event -> abhijith.run());
         Button Shopping_button = new Button("Add Payment Methods");
         Shopping_button.setGraphic(PaymentView);
         Shopping_button.setContentDisplay(ContentDisplay.TOP);

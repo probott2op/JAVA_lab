@@ -14,6 +14,7 @@ public class CustomerController
     Builder<Region> OptionMenuview;
     CustomerInteractor interactor;
     CustomerDatabaseBroker broker;
+    Abhijith continue_with_payment;
     CustomerController(Stage PrimaryStage)
     {
         this.PrimaryStage = PrimaryStage;
@@ -45,7 +46,7 @@ public class CustomerController
             if (temp_user.equals(model_signin.getUserId()) && temp_pass.equals(model_signin.getPassword()))
             {
                 flag = 1;
-                OptionMenuview = new OptionMenu(broker, i, this::logout);
+                OptionMenuview = new OptionMenu(broker, i, this::logout, this::abhijith);
                 Scene MenuScene = new Scene(OptionMenuview.build());
                 PrimaryStage.setScene(MenuScene);
                 break;
@@ -60,5 +61,11 @@ public class CustomerController
     {
         Scene logout = new Scene(getSignInView());
         PrimaryStage.setScene(logout);
+    }
+    private void abhijith()
+    {
+        continue_with_payment = new Abhijith(PrimaryStage);
+        Scene continueScene = new Scene(continue_with_payment.build(),650,650);
+        PrimaryStage.setScene(continueScene);
     }
 }
