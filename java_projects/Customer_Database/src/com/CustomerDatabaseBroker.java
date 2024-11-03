@@ -9,7 +9,7 @@ public class CustomerDatabaseBroker
     {
         db = new CustomerDatabase();
     }
-    public void addDetail(Map<String,String> cust)
+    public void addDetail(Map<String,Object> cust)
     {
         db.saveCustomer(cust);
     }

@@ -15,6 +15,8 @@ public class CustomerController
     CustomerInteractor interactor;
     CustomerDatabaseBroker broker;
     Abhijith continue_with_payment;
+    ishaan add_payment;
+    int ID;
     CustomerController(Stage PrimaryStage)
     {
         this.PrimaryStage = PrimaryStage;
@@ -46,7 +48,8 @@ public class CustomerController
             if (temp_user.equals(model_signin.getUserId()) && temp_pass.equals(model_signin.getPassword()))
             {
                 flag = 1;
-                OptionMenuview = new OptionMenu(broker, i, this::logout, this::abhijith);
+                ID = i;
+                OptionMenuview = new OptionMenu(broker, i, this::logout, this::abhijith, this::ishaan);
                 Scene MenuScene = new Scene(OptionMenuview.build());
                 PrimaryStage.setScene(MenuScene);
                 break;
@@ -64,8 +67,19 @@ public class CustomerController
     }
     private void abhijith()
     {
-        continue_with_payment = new Abhijith(PrimaryStage);
+        continue_with_payment = new Abhijith(PrimaryStage, ID,broker, this::back_options);
         Scene continueScene = new Scene(continue_with_payment.build(),650,650);
         PrimaryStage.setScene(continueScene);
+    }
+    private void ishaan()
+    {
+        add_payment = new ishaan(ID,broker, this::back_options);
+        Scene continueScene = new Scene(add_payment.build(),650,650);
+        PrimaryStage.setScene(continueScene);
+    }
+    private void back_options()
+    {
+        Scene options = new Scene(OptionMenuview.build());
+        PrimaryStage.setScene(options);
     }
 }

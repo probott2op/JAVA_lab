@@ -1,0 +1,17 @@
+.back-button {
+    -fx-background-color: #007BFF; /* Blue background */
+    -fx-text-fill: white;           /* White text color */
+    -fx-padding: 10px 20px;        /* Padding around the text */
+    -fx-font-size: 14px;            /* Font size */
+    -fx-border-radius: 5px;        /* Rounded corners */
+    -fx-background-radius: 5px;    /* Rounded background */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1); /* Shadow effect */
+}
+
+.back-button:hover {
+    -fx-background-color: #0056b3; /* Darker blue on hover */
+}
+
+.back-button:pressed {
+    -fx-background-color: #004494; /* Even darker blue when pressed */
+}

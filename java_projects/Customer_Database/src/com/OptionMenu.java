@@ -19,12 +19,14 @@ public class OptionMenu implements Builder<Region>
     int id;
     Runnable signout;
     Runnable abhijith;
-    OptionMenu(CustomerDatabaseBroker broker, int id, Runnable signout, Runnable abhijith)
+    Runnable ishaan;
+    OptionMenu(CustomerDatabaseBroker broker, int id, Runnable signout, Runnable abhijith, Runnable ishaan)
     {
         this.signout = signout;
         this.broker = broker;
         this.id = id;
         this.abhijith = abhijith;
+        this.ishaan = ishaan;
     }
     @Override
     public Region build()
@@ -53,6 +55,7 @@ public class OptionMenu implements Builder<Region>
         Shopping_button.setGraphic(PaymentView);
         Shopping_button.setContentDisplay(ContentDisplay.TOP);
         Shopping_button.getStyleClass().add("button");
+        Shopping_button.setOnAction(event -> ishaan.run());
         Node signout_button = CreateButton("Log out", "signout-button", event -> signout.run());
 
         AnchorPane MainFrame = new AnchorPane();

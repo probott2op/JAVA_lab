@@ -13,25 +13,25 @@ public class CustomerDatabaseTest
     public void saveCustomerTestId1()
     {
         CustomerDatabase db = new CustomerDatabase();
-        db.saveCustomer(new HashMap<String,String>());
+        db.saveCustomer(new HashMap<String,Object>());
         assertEquals("1",db.getDetail(1, "Id:"));
     }
     @Test
     public void saveCustomerTestId2()
     {
         CustomerDatabase db = new CustomerDatabase();
-        db.saveCustomer(new HashMap<String,String>());
-        db.saveCustomer(new HashMap<String,String>());
+        db.saveCustomer(new HashMap<String,Object>());
+        db.saveCustomer(new HashMap<String,Object>());
         assertEquals("2",db.getDetail(2, "Id:"));
     }
     @Test
     public void saveCustomerName()
     {
         CustomerDatabase db = new CustomerDatabase();
-        Map<String,String> cust1 = new HashMap<>();
+        Map<String,Object> cust1 = new HashMap<>();
         cust1.put("Name:","Harsh");
         cust1.put("Email:","Harsh@gmail.com");
-        Map<String,String> cust2 = new HashMap<>();
+        Map<String,Object> cust2 = new HashMap<>();
         cust2.put("Name:","Manish");
         cust2.put("Email:","Manish@gmail.com");
         db.saveCustomer(cust1);
