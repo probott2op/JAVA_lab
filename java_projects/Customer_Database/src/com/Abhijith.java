@@ -19,13 +19,18 @@ public class  Abhijith implements Builder<Region>
     Stage primaryStage;
     int ID;
     CustomerDatabaseBroker broker;
-    Runnable back;
-    Abhijith(Stage primaryStage, int ID, CustomerDatabaseBroker broker, Runnable back)
+    Runnable back_options;
+    Runnable back_continue_payments;
+    String selectedPaymentMethod;
+    Runnable redir;
+    Abhijith(Stage primaryStage, int ID, CustomerDatabaseBroker broker, Runnable back, Runnable back_continue_payments, Runnable redir)
     {
         this.ID = ID;
         this.primaryStage = primaryStage;
         this.broker = broker;
-        this.back = back;
+        this.back_options = back;
+        this.back_continue_payments = back_continue_payments;
+        this.redir = redir;
     }
     @Override
     public Region build() 
@@ -58,7 +63,7 @@ public class  Abhijith implements Builder<Region>
             proceedButton.setVisible(true);
         });
 
-        Node back_button = CreateButton("Back", "back-button", event -> back.run());
+        Node back_button = CreateButton("Back", "back-button", event -> back_options.run());
         back_button.setLayoutX(5.0);
         back_button.setLayoutY(5.0);
 
@@ -69,7 +74,7 @@ public class  Abhijith implements Builder<Region>
         paymentOptions.setVisible(false);
 
         proceedButton.setOnAction(event -> {
-            String selectedPaymentMethod = paymentOptions.getValue();
+            selectedPaymentMethod = paymentOptions.getValue();
             if (selectedPaymentMethod != null) {
                 loadPaymentOptionsScene(primaryStage, selectedPaymentMethod);
             }
@@ -81,7 +86,7 @@ public class  Abhijith implements Builder<Region>
 
     // Loads the UI for each payment option with respective fields
     private void loadPaymentOptionsScene(Stage stage, String paymentMethod) {
-        Node back_button = CreateButton("Back", "back-button", event -> back.run());
+        Node back_button = CreateButton("Back", "back-button", event -> back_continue_payments.run());
         VBox boxLayout = new VBox(10);
         boxLayout.setAlignment(Pos.CENTER);
         
@@ -169,10 +174,11 @@ public class  Abhijith implements Builder<Region>
         Button confirmButton = new Button("Confirm Payment");
         confirmButton.setOnAction(e -> {
             System.out.println("Payment processed for card: " + card.get("CardNumber:"));
+            redir.run();
             // Handle payment processing here
         });
         layout.getChildren().add(confirmButton);
-        Node back_button = CreateButton("Back", "back-button", event -> back.run());
+        Node back_button = CreateButton("Back", "back-button", event -> loadPaymentOptionsScene(primaryStage, selectedPaymentMethod));
         layout.getChildren().add(back_button);
         layout.getStylesheets().add(this.getClass().getResource("styles/Ishaan/ishaan.css").toExternalForm());
     }
@@ -259,10 +265,11 @@ public class  Abhijith implements Builder<Region>
         Button confirmButton = new Button("Confirm Payment");
         confirmButton.setOnAction(e -> {
             System.out.println("Payment processed for Net Banking account: " + netBanking.get("AccountNo:"));
+            redir.run();
         });
         layout.getChildren().add(confirmButton);
 
-        Node back_button = CreateButton("Back", "back-button", event -> back.run());
+        Node back_button = CreateButton("Back", "back-button", event -> loadPaymentOptionsScene(primaryStage, selectedPaymentMethod));
         layout.getChildren().add(back_button);
         layout.getStylesheets().add(this.getClass().getResource("styles/Ishaan/ishaan.css").toExternalForm());
     }
@@ -305,10 +312,11 @@ public class  Abhijith implements Builder<Region>
         Button confirmButton = new Button("Confirm Payment");
         confirmButton.setOnAction(e -> {
             System.out.println("Payment processed for UPI ID: " + upi.get("UpiId:"));
+            redir.run();
         });
         layout.getChildren().add(confirmButton);
 
-        Node back_button = CreateButton("Back", "back-button", event -> back.run());
+        Node back_button = CreateButton("Back", "back-button", event -> loadPaymentOptionsScene(primaryStage, selectedPaymentMethod));
         layout.getChildren().add(back_button);
         layout.getStylesheets().add(this.getClass().getResource("styles/Ishaan/ishaan.css").toExternalForm());
     }    

@@ -15,6 +15,7 @@ public class CustomerController
     CustomerInteractor interactor;
     CustomerDatabaseBroker broker;
     Abhijith continue_with_payment;
+    Redirecting redir;
     ishaan add_payment;
     int ID;
     CustomerController(Stage PrimaryStage)
@@ -67,7 +68,7 @@ public class CustomerController
     }
     private void abhijith()
     {
-        continue_with_payment = new Abhijith(PrimaryStage, ID,broker, this::back_options);
+        continue_with_payment = new Abhijith(PrimaryStage, ID,broker, this::back_options, this::back_continue_payments, this::redirecting);
         Scene continueScene = new Scene(continue_with_payment.build(),650,650);
         PrimaryStage.setScene(continueScene);
     }
@@ -81,5 +82,15 @@ public class CustomerController
     {
         Scene options = new Scene(OptionMenuview.build());
         PrimaryStage.setScene(options);
+    }
+    private void back_continue_payments()
+    {
+        this.abhijith();
+    }
+    private void redirecting()
+    {
+        redir = new Redirecting();
+        Scene final_scene = new Scene(redir.build(),500,500);
+        PrimaryStage.setScene(final_scene);
     }
 }

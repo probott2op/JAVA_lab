@@ -1,0 +1,17 @@
+.vbox {
+    -fx-spacing: 10; /* Space between children */
+    -fx-padding: 20; /* Padding around the VBox */
+    -fx-background-color: #f0f0f0; /* Background color */
+    -fx-border-color: #cccccc; /* Border color */
+    -fx-border-width: 1; /* Border width */
+    -fx-border-radius: 5; /* Rounded corners */
+}
+
+.label {
+    -fx-font-size: 28px; /* Font size for labels */
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Text color */
+    -fx-padding: 5; /* Padding around the text */
+    -fx-background-color: #ffffff; /* Background color for labels */
+    -fx-background-radius: 3; /* Rounded corners for labels */
+}
