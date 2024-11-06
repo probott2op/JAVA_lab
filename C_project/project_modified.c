@@ -107,9 +107,12 @@ void generateRandomWord(char *word, char *meaning)
     int random2 = rand() % 10; // Random traversal in the bucket
 
     node *temp = table[random];
-    for (int i = 0; i < random2 && temp->next != NULL && temp != NULL; i++)
+    if(temp != NULL)
     {
-        temp = temp->next;
+         for (int i = 0; i < random2 && temp->next != NULL; i++)
+        {
+            temp = temp->next;
+        }
     }
     if (segmentation_preventor == 15 && temp == NULL)
         temp = table[15];
@@ -139,8 +142,8 @@ void generateRandomWord(char *word, char *meaning)
     }
     else
     {
-        generateRandomWord(word, meaning);
         segmentation_preventor++;
+        generateRandomWord(word, meaning);
     }
 }
 
@@ -195,7 +198,7 @@ void enqueue(queue *q, char* name, int score)
 {
     for (int i = 0; i < q->rear; i++)
     {
-        if(strcmp(q->names[i],name) == 0)
+        if(!strcmp(q->names[i],name))
         {
             q->scores[i] += score;
             return;
